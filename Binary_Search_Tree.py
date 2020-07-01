@@ -19,6 +19,25 @@ def insert(root,node):
             else:
                 insert(root.left, node)
                 
+def delete_node(root, key):
+    if root is None:
+        return root
+    if key < root.val:
+        root.left = delete_node(root.left,key)
+    elif key > root.val:
+        root.right = delete_node(root.right, key)
+    else:
+        if root.left is None:
+            temp = root.right
+            root = None
+            return temp
+        
+        elif root.right is None:
+            temp = root.left
+            root = None
+            return temp
+    
+                
 def inorder(root):
     if root:
         inorder(root.left)
